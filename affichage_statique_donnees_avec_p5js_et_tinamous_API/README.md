@@ -2,7 +2,7 @@
 
 
 [Tinamous](http://tinamous.com/) est un service de stockage de données en ligne, gratuit pour un usage léger.  
-Pour cet exemple les données ont été envoyées par un capteur de luminosité relié à un Photon. Le capteur a été actif entre le 13 mars 2020 et le 3 mai 2020, ([historique complet)](https://lesporteslogiques.tinamous.com/Devices/noir/MeasurementHistory)  
+Pour cet exemple les données ont été envoyées par un capteur de luminosité relié à un Photon. Le capteur a été actif entre le 13 mars 2020 et le 3 mai 2020, ([(historique complet)](https://lesporteslogiques.tinamous.com/Devices/noir/MeasurementHistory)  
 Les données sont récupérées sous la forme d'un fichier JSON et affichées par p5.js. Une fois les données affichées le programme s'arrête.
 
 Le résultat est visible ici : [API Tinamous + p5.js](http://emoc.org/introduction_photon/affichage_statique_donnees_avec_p5js_et_tinamous_API/)  
