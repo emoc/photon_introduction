@@ -2,6 +2,5 @@
 
 (en cours de rédaction mai 2020)
 
-# ~ (◕‿◕) ~
 
 # 💅 . 
