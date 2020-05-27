@@ -1,12 +1,12 @@
-# Affichage statique de données avec p5.js et l'API de Tinamous
+# Affichage statique de données avec p5.js et l'API de Tinamous 
 
 [Tinamous](http://tinamous.com/) est un service de stockage de données en ligne, gratuit pour un usage léger.  
 Pour cet exemple les données ont été envoyées par un capteur de luminosité relié à un Photon. Le capteur a été actif entre le 13 mars 2020 et le 3 mai 2020, ([historique complet)](https://lesporteslogiques.tinamous.com/Devices/noir/MeasurementHistory)  
 Les données sont récupérées sous la forme d'un fichier JSON et affichées par p5.js. Une fois les données affichées le programme s'arrête.
 
-On peut voir le résultat ici : [API Tinamous + p5.js]([http://emoc.org/introduction_photon/affichage_statique_donnees_avec_p5js_et_tinamous_API/)  
+On peut voir le résultat ici : [API Tinamous + p5.js](http://emoc.org/introduction_photon/affichage_statique_donnees_avec_p5js_et_tinamous_API/)  
 
-## Détails sur le fonctionnement
+## Détails sur le fonctionnement  
 
 Pour interroger l'API de Tinamous, il est nécessaire de contourner les règles CORS (Cross Origin Ressource Sharing) du navigateur. Pour cela un serveur proxy est utilisé.
 
@@ -19,13 +19,13 @@ Avant de l'inclure dans le programme, la requête peut être testée avec **curl
 curl -X GET --header 'Accept: application/json' 'https://lesporteslogiques.tinamous.com/api/v1/measurements/noir/0?startDate=2020-04-26T08:00:00.000&endDate=2020-04-26T15:00:00.000&limit=240&sortOrder=Asc'
 ```
 
-### API Tinamous
+### API Tinamous 
 
 Documentation : https://tinamous.com/ApiDocs
 
 Les dates utilisées dans les requêtes de l'API sont écrites sous cette forme : **2020-04-26T12:00:00.000**
 
-## Ressources utiles
+## Ressources utiles 
 
 Serveur proxy CORS : https://cors-anywhere.herokuapp.com/
 [Qu'est ce que les règles CORS ?](https://developer.mozilla.org/fr/docs/Web/HTTP/CORS)  
