@@ -1,4 +1,4 @@
-# Affichage statique de données avec p5.js et l'API de Tinamous  
+# Affichage statique de données avec p5.js et l'API de Tinamous  
 
 
 [Tinamous](http://tinamous.com/) est un service de stockage de données en ligne, gratuit pour un usage léger.  
@@ -8,7 +8,7 @@ Les données sont récupérées sous la forme d'un fichier JSON et affichées pa
 Le résultat est visible ici : [API Tinamous + p5.js](http://emoc.org/introduction_photon/affichage_statique_donnees_avec_p5js_et_tinamous_API/)  
 
 
-## Détails sur le fonctionnement  
+## Détails sur le fonctionnement  
 
 
 Pour interroger l'API de Tinamous, il est nécessaire de contourner les règles CORS (Cross Origin Ressource Sharing) du navigateur. Pour cela un serveur proxy est utilisé.
@@ -31,7 +31,7 @@ Documentation : https://tinamous.com/ApiDocs
 Les dates utilisées dans les requêtes de l'API sont écrites sous cette forme : **2020-04-26T12:00:00.000**
 
 
-## Ressources utiles 
+## Ressources utiles 
 
 
 Serveur proxy CORS : https://cors-anywhere.herokuapp.com/
