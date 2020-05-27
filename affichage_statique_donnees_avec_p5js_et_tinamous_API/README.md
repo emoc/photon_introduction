@@ -36,10 +36,10 @@ Les dates utilisées dans les requêtes de l'API sont écrites sous cette forme 
 
 Serveur proxy CORS : https://cors-anywhere.herokuapp.com/
 [Qu'est ce que les règles CORS ?](https://developer.mozilla.org/fr/docs/Web/HTTP/CORS)  
-p5.js : fonction [HttpDo()](https://p5js.org/reference/#/p5/httpDo)  
-javascript : fonction [parseInt()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/parseInt)  
-javascript : méthode [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse)  
-javascript : [utiliser des tableaux comme type de données (Array)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Objets_%C3%A9l%C3%A9mentaires_JavaScript)  
+p5.js : fonction [HttpDo](https://p5js.org/reference/#/p5/httpDo)  
+javascript : fonction [parseInt](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/parseInt)  
+javascript : méthode [JSON.parse](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse)  
+javascript : [utiliser des tableaux comme type de données, Array](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Objets_%C3%A9l%C3%A9mentaires_JavaScript)  
 Le [format de données JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation)  
 Affichage structuré de données JSON http://json.parser.online.fr/  
 curl : https://curl.haxx.se/  
