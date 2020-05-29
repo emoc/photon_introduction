@@ -26,7 +26,7 @@ La carte Photon se programme sans fil (ce qui permet aussi de la programmer sans
 Pour la partie électronique, le microcontrôleur (= «le cerveau de la carte» qui équipe l'arduino fait partie de la série ATMega 8bits de Microchip, alors que le Photon est équipé d'un microcontrôleur ARM Cortex M3 32bits, plus puissant ainsi que d'un circuit spécialisé pour la partie wifi (TODO voir plus loin pour des explications précises).
 
 
-### Pré-requis
+### Pré-requis
 
 
 Cette introduction à Photon requiert que vous soyez déjà initié à l'électronique interactive :
@@ -55,7 +55,7 @@ C'est la société américaine [Particle](https://www.particle.io/) qui fabrique
 
 ### Photon en détail
 
-[Brochage d'une carte Photon](./assets/images_bd/photon_brochage.png)
+[Brochage d'une carte Photon](https://github.com/emoc/blob/master/assets/images_bd/photon_brochage.png)
 
 1. Connecteur USB pour l'alimentation, ou la connexion à un ordinateur.
 2. Bouton *SETUP* (multifonction).
@@ -63,7 +63,7 @@ C'est la société américaine [Particle](https://www.particle.io/) qui fabrique
 4. Led RGB interne utilisée pour donner des informations sur l'état du Photon.
 5. Circuit P0 Particle (microcontrôleur, circuit intégré WIFI, etc.)
 6. interrupteur à bascule Radiofréquence, pour changer l'antenne utilisée (interne ou connecteur extérieur)
-7. Connecteur pour relier une antenne WIFI externe afin d'agrandir la distance de communication wifi (connecteur de type Hirose [U.FL mâle](https://en.wikipedia.org/wiki/Hirose_U.FL))
+7. Connecteur pour relier une antenne WIFI externe afin d'agrandir la distance de communication wifi (connecteur de type [Hirose U.FL mâle](https://en.wikipedia.org/wiki/Hirose_U.FL))
 8. Antenne WIFI intégrée
 
 Description des broches en partant du haut à droite :
@@ -81,4 +81,4 @@ Description des broches en partant du haut à droite :
 * GND (*Ground*) : broche de masse
 * VIN (*Voltage in*) : entrée d'alimentation, utilisée pour relier une alimentation extérieure, alternative à l'alimentation par USB (la tension fournie doit être entre 3.6V et 5.5V)
 
-[datasheet et schémas du Photon](https://docs.particle.io/datasheets/wi-fi/photon-datasheet/)
+Tous les détails : [datasheet et schémas du Photon](https://docs.particle.io/datasheets/wi-fi/photon-datasheet/)
