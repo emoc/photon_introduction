@@ -12,8 +12,8 @@ let DEBUG = false;
 
 function preload() {
   
-  // Passer par un proxy pour court-circuiter les contraintes CORS
-  let url = 'https://cors-anywhere.herokuapp.com/https://lesporteslogiques.tinamous.com/api/v1/measurements/noir/0?startDate=2020-04-26T08:00:00.000&endDate=2020-04-26T15:00:00.000&limit=240&sortOrder=Asc';
+  // Construction de la requête pour recevoir les données souhaitées
+  let url = 'https://lesporteslogiques.tinamous.com/api/v1/measurements/noir/0?startDate=2020-04-26T08:00:00.000&endDate=2020-04-26T15:00:00.000&limit=240&sortOrder=Asc';
   
   // Il est nécessaire d'utiliser httpDo car l'API de Tinamous demande à ce que le type de données soit précisé 
   // dans la requête (JSON ou XML)

@@ -11,8 +11,6 @@ Le résultat est visible ici : [API Tinamous + p5.js](http://emoc.org/introducti
 ## Détails sur le fonctionnement  
 
 
-Pour interroger l'API de Tinamous, il est nécessaire de contourner les règles CORS (Cross Origin Ressource Sharing) du navigateur. Pour cela un serveur proxy est utilisé.
-
 Le type de données renvoyées par l'API est précisé par la requête envoyée, la requête est préparée en utilisant la fonction **HttpDo()** de p5.js
 
 La requête faite à l'API renvoie une chaîne de caractère, celle ci est transformée en objet par la méthode **JSON.parse()**
@@ -34,8 +32,6 @@ Les dates utilisées dans les requêtes de l'API sont écrites sous cette forme 
 ## Ressources utiles 
 
 
-Serveur proxy CORS : https://cors-anywhere.herokuapp.com/
-[Qu'est ce que les règles CORS ?](https://developer.mozilla.org/fr/docs/Web/HTTP/CORS)  
 p5.js : fonction [HttpDo()](https://p5js.org/reference/#/p5/httpDo)  
 javascript : fonction [parseInt()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/parseInt)  
 javascript : méthode [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse)  
