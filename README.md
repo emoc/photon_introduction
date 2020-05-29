@@ -55,7 +55,7 @@ C'est la société américaine [Particle](https://www.particle.io/) qui fabrique
 
 ### Photon en détail
 
-[Brochage d'une carte Photon](https://github.com/emoc/blob/master/assets/images_bd/photon_brochage.png)
+![Brochage d'une carte Photon](./assets/images_bd/photon_brochage.png)
 
 1. Connecteur USB pour l'alimentation, ou la connexion à un ordinateur.
 2. Bouton *SETUP* (multifonction).
