@@ -13,3 +13,5 @@
   * modifier la variable deviceId avec i'ID du Photon utilisé
   * modifier l'accessToken avec celui associé au compte utilisateur
 * ouvrir la page interface_web/couleur.html dans un navigateur
+
+![schéma électrique du circuit](./controle_ruban_led_schema.png)
