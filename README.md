@@ -155,7 +155,30 @@ La led change de couleur!
 
 ## Communication à distance
 
-(TODO)
+Le Photon permet de communiquer par le WIFI : par exemple pour envoyer des données captées ou pour recevoir des commandes et réaliser des actions.
+
+Ces types de communication sont activées par des fonctions dans le code du programme.
+
+Plusieurs exemples sont donnés dans ce chapitre pour explorer ces différents possibilités, mais commençons par passer en revue ces fonctions avant de les détailler ci-après :
+
+**[Particle.function()](https://docs.particle.io/reference/device-os/firmware/photon/#particle-function-)** : ce type de fonction peut être déclenché par une requête POST venue d'un site web, par exemple : déclencher un éclairage depuis une interface web distante. Jusqu'à 15 fonctions peuvent être associées à un Photon.
+
+**[Particle.variable()](https://docs.particle.io/reference/device-os/firmware/photon/#particle-variable-)** : variable exposée sur le cloud, dont on peut récupérer la valeur par une requête GET, par exemple : afficher la température recueillie par un capteur sur un site web distant. Jusqu'à 20 variables peuvent être utilisées par un Photon.
+
+Ces variables et ces fonctions sont définies dans le setup() avec un identifiant, elles sont associées à une variable ou une fonction du programme.
+
+**[Particle.publish()](https://docs.particle.io/reference/device-os/firmware/photon/#particle-publish-)** : chaque Photon peut publier des mini-messages qui sont envoyées sur le cloud avec une durée de vie de 60 secondes, on peut les voir comme des sortes de *tweets*, des services externes peuvent être déclenchés à partir de ces messages. (par exemple : un message publié quand la lumière est allumée déclenche l'envoi d'un SMS). Chaque Photon est limité à l'envoi d'un message par seconde.
+
+Quelle différence entre Particle.variable() et Particle.publish() ?  
+Particle.publish() «pousse» une variable sur le cloud, alors qu'il faut aller chercher la valeur de Particle.variable() par une requête.
+
+**[Particle.subscribe()](https://docs.particle.io/reference/device-os/firmware/photon/#particle-subscribe-)** : un Photon peut être abonné aux messages publiés par un autre Photon, ce qui permet de les faire communiquer (par exemple : un mouvement détecté dans un lieu déclenche une installation musicale dans un autre)
+
+Référence sur les [fonctions Cloud](https://docs.particle.io/reference/device-os/firmware/photon/#cloud-functions)
+
+**[webhooks](https://docs.particle.io/reference/device-cloud/webhooks/)** : les *webhooks* («hameçons web») constituent une autre catégorie, ils sont créé dans le cloud Particle pour mettre en relation un ou plusieurs Photons avec d'autres services internet, par exemple pour stocker des valeurs de capteur dans un service de conservation et de traitement de données.
+
+**Identification et sécurité** : rendre accessible un Photon sur internet, ne signifie pas nécessairement le rendre accessible à tout le monde. Pour définir les droits d'accès chaque Photon possède un identifiant unique (*device id*), et chaque compte utilisateur est associé à un jeton d'accès (*access token*)
 
 ## Ressources
 
@@ -191,7 +214,7 @@ Tous les détails : [datasheet et schémas du Photon](https://docs.particle.io/d
 
 ### Photon en ligne de commande
 
-#### Installer les outils console
+#### Installer les outils console
 
 Différentes opérations sont possibles sur un Photon en ligne de commande, pour cela il faut installer les outils CLI qui utilisent Node.js. L'installation est différente selon le système d'exploitation de l'ordinateur (linux, macOS, windows)
 
@@ -214,8 +237,6 @@ particle add device {ID du Photon trouvé précédemment}
 ### Lexique
 
 **CLI** (*Command Line Interface*) : outils en ligne de commande.
-
-
 
 **Firmware** (parfois traduit micrologiciel, microcode) : logiciel «embarqué» dans un circuit, c'est le nom d'un logiciel qui sera placé dans un circuit programmable. (cf. [Firmware sur wikipedia](https://fr.wikipedia.org/wiki/Firmware))
 
