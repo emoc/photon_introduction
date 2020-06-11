@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 
+    Contrôle de la couleur d'un ruban de leds à distance
+    pierre@lesporteslogiques.net / 20200611
+    à utiliser avec un Photon (voir https://github.com/emoc/introduction_photon)
+    IMPORTANT : remplacer deviceId et AccessToken par des valeurs réelles!
+ -->
+<meta charset="utf-8">
+<script src="./jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+
+<style type="text/css">
+    div {
+        width: 200px;
+        height: 250px;
+        background-color: white;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    #couleur {
+        width: 200px;
+        height: 200px;
+        padding: 10px;
+    }
+    #couleur-choisie {
+        width: 180px;
+    }
+</style>
+
+<script>
+var accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+var deviceID = "xxxxxxxxxxxxxxxxxxxxxxxx";
+var url = "https://api.particle.io/v1/devices/" + deviceID + "/couleurs";
+
+function envoyerCouleur(nouvelle_couleur) {
+
+    var rouge = pad(hexToRgb(nouvelle_couleur).r, 3);
+    var vert  = pad(hexToRgb(nouvelle_couleur).g, 3);
+    var bleu  = pad(hexToRgb(nouvelle_couleur).b, 3);
+    
+    var couleur = rouge + vert + bleu;
+    //alert(couleur);
+
+    $.post(url, {params: couleur, access_token: accessToken });
+}  
+
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
+function pad(num, size) {
+    var s = "000000000" + num;
+    return s.substr(s.length-size);
+}
+
+</script>
+
+</head>	
+
+<body>
+    <div>
+        <input id="couleur" type="color" value="#ff0000" onchange="javascript:document.getElementById('couleur-choisie').value = document.getElementById('couleur').value; envoyerCouleur(document.getElementById('couleur').value);" />
+        <br /><br />
+        <input id="couleur-choisie" type="text" readonly value="#ff0000" />
+    </div>
+</body>
+
+</html>

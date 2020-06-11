@@ -1,0 +1,69 @@
+/*
+  Contrôle d'un ruban de leds RVB à distance
+  pierre@lesporteslogiques.net / 20200611
+  des boutons sont ajoutés au circuit pour tester "localement"  
+  photon firmware v1.4.4
+    + lib. neopixel v1.0.0 : https://github.com/technobly/Particle-NeoPixel
+*/
+
+#include <neopixel.h>                     // inclure la bibliothèque de fonctions pour les leds RGB
+
+#define PIXEL_PIN D2                      // le ruban est connecté à la broche D2    
+#define PIXEL_COUNT 4                     // le ruban compte 4 leds
+#define PIXEL_TYPE WS2812B                // les leds du ruban sont de type WS2812B (type de microcontrôleur)
+
+Adafruit_NeoPixel strip(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
+
+#define BROCHE_BOUTON1    D0              // premier bouton relié à la broche D0
+#define BROCHE_BOUTON2    D1              // second bouton relié à la broche D1
+
+
+void setup() {
+
+    strip.begin();                        // initialiser le ruban de leds
+    strip.show(); 
+    
+    pinMode(BROCHE_BOUTON1, INPUT);       // broche déclarée comme une entrée
+    pinMode(BROCHE_BOUTON2, INPUT);       // broche déclarée comme une entrée
+    
+    Particle.function("couleurs", modifierCouleur); // créer une fonction cloud pour recevoir les valeurs de couleur
+}
+
+
+void loop() {
+    
+    // Le premier bouton change aléatoirement les couleurs de chaque led
+    if (digitalRead(BROCHE_BOUTON1) == HIGH) {
+        for(int i=0; i<strip.numPixels(); i++) {
+            strip.setPixelColor(i, strip.Color(random(255),  random(255), random(255)));
+        }
+        strip.setBrightness(25);          // définir une luminosité faible
+    }
+    
+    // Le second bouton «éteint» le ruban
+    if (digitalRead(BROCHE_BOUTON2) == HIGH) {
+        strip.setBrightness(0);           // définir une luminosité nulle
+    } 
+
+    strip.show();                         // mettre à jour les valeurs des leds
+    delay(300);                           // pause de 300 millisecondes
+}
+
+
+// Fonction pour interpréter les valeurs reçues par internet
+
+int modifierCouleur(String commande) {
+    
+    // Séparer la chaine reçue en 3 éléments numériques
+    int r = commande.substring(0, 3).toInt();
+    int g = commande.substring(3, 6).toInt();
+    int b = commande.substring(6, 9).toInt();
+
+    for(int i=0; i<strip.numPixels(); i++) {
+        strip.setPixelColor(i, strip.Color(g, r, b));
+    }
+    
+    strip.setBrightness(25);
+    strip.show();
+    delay(500);                           // pause d'une demi seconde
+}
