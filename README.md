@@ -111,21 +111,47 @@ Au centre la colonne se divise en trois parties : en haut, l'application en cour
 ![Icône de console](./assets/icones/ide_icone_console.png) Afficher la console cloud (messages envoyés par les Photons, journal d'activité, etc.)  
 ![Icône de réglages](./assets/icones/ide_icone_reglage.png) Changement de mot de passe, réglages divers.  
 
+![Statut du Photon](./assets/icones/ide_identification_photon.png) Identification et statut du Photon : ici on peut lire : le Photon actif s'appelle «noir», il n'est pas connecté au cloud, il est équipé d'une version du système v1.4.4. L'icône de petite ampoule permet de le faire clignoter à distance pour l'identifier s'il y en a plusieurs!  
+
 ### Tester son Photon avec un premier programme
 
-(TODO)
+Comme première application, nous allons contrôler la led RVB intégrée du Photon. La led RVB est utilisée par le système pour donner des informations sur son état et son fonctionnement, notre programme prendra le contrôle de la led pour changer sa couleur, puis abandonnera ce contrôle pour que le Photon puisse donner ces indications habituelles.
 
-Comme première application, nous allons contrôler la led RVB intégrée du Photon.
+référence : [utiliser la led RVB](https://docs.particle.io/reference/device-os/firmware/photon/#rgb)
 
-Créer une nouvelle application
+1.Créer une nouvelle application «controle-led-rvb»
 
-Entrer le code suivant
+2.Entrer le code suivant
+```c++
+/* controle de la led RGB intégrée
+   https://docs.particle.io/reference/device-os/firmware/photon/#rgb
+*/
 
-Compiler pour vérifier qu'il n'y a pas d'erreurs de syntaxe (le cas échéant, elles apparaîtront sous la zone de code)
+void setup() {
+}
 
-Flasher
+void loop() {
+    RGB.control(true);    // autoriser le contrôle de la led RVB
+    RGB.color(255, 0, 0); // rouge
+    delay(1000);          // pause d'une seconde (1000 millisecondes)
+    RGB.color(0, 255, 0); // vert
+    delay(1000);
+    RGB.color(0, 0, 255); // bleu
+    delay(1000);
+    RGB.control(false);   // rendre le contrôle de la led RVB au système
+    delay(5000);          // pause de 5 secondes
+}
+```
+
+3.Enregistrer le programme dans votre cloud Particle personnel
+
+4.Compiler pour vérifier qu'il n'y a pas d'erreurs de syntaxe (le cas échéant, elles apparaîtront sous la zone de code)
+
+5.Flasher
 
 La led change de couleur!
+
+![Etapes de programmation d'un photon en animation](./assets/anims/ide_controle_led_rvb_anim.gif)
 
 ## Communication à distance
 
