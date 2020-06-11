@@ -1,0 +1,18 @@
+/*
+  Mesure de luminosité avec une photorésistance
+  pierre@lesporteslogiques.net / 20200611
+*/
+
+#define BROCHE_PHOTORESISTANCE     A0
+
+int signal_photoresistance = 0;
+
+
+void setup() {
+    Particle.variable("photores", signal_photoresistance);
+}
+
+void loop() {
+    signal_photoresistance = analogRead(BROCHE_PHOTORESISTANCE);
+    delay(60000);
+}

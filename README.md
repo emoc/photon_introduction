@@ -180,15 +180,63 @@ Particle.publish() «pousse» une variable sur le cloud, alors qu'il faut aller 
 
 Référence complète des [fonctions Cloud](https://docs.particle.io/reference/device-os/firmware/photon/#cloud-functions)
 
-### Déclencher des actions à distance
+### Actions à distance
 
+#### Allumer une led à distance
+
+Car on commence toujours par une led !
+
+(TODO)
+
+#### Allumer une led à distance (avec retour d'informations)
+
+(TODO)
 
 #### Choisir la couleur d'un ruban de leds par une interface web
 
 [Voir ici pour le montage et les explications](./choisir_couleur_leds_RVB_a_distance_avec_javascript)
 
+#### Allumer un appareil à distance
+
+Dans cet exemple, c'est une lampe mais ça pourrait être toute sorte d'appareil électrique relié au secteur.  
+(TODO)
+
+#### Activer un service web à partir d'un bouton
+
+Avec IFTTT : un bouton pour envoyer un tweet.  
+(TODO)
+
+### Récupérer des données depuis un Photon
+
+#### Afficher des données envoyées par un Photon
+
+Pour cet exemple, on utilisera un capteur simple de lumière : une photo résistance
+La valeur captée influe sur la couleur de fond de la page.  
+(TODO)
+
+#### Stocker des données et les traiter (avec Tinamous)
+
+(TODO) ajouter montage
+
+[Voir ici pour le montage et les explications](./affichage_statique_donnees_avec_p5js_et_tinamous_API)
+
+#### Stocker des données et les traiter (avec Thingspeak)
+
+(TODO) notions de webhooks
+
+#### Afficher des données du web
+
+(TODO) source de données + afficheur 4x7 segments
 
 ## Ressources
+
+### Documentation
+
+Documentation du Photon : https://docs.particle.io/photon/  
+Forum de discussion (anglophone) : https://community.particle.io/  
+Réalisations avec Photon: https://www.hackster.io/particle/products/photon?sort=trending  
+Dépôt de code Particle : https://github.com/particle-iot  
+
 
 ### Photon en détail
 
@@ -240,9 +288,7 @@ particle cloud login
 particle add device {ID du Photon trouvé précédemment}
 ```
 
-
-
-### Lexique
+## Lexique
 
 **CLI** (*Command Line Interface*) : outils en ligne de commande.
 
