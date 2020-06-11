@@ -174,11 +174,19 @@ Particle.publish() «pousse» une variable sur le cloud, alors qu'il faut aller 
 
 **[Particle.subscribe()](https://docs.particle.io/reference/device-os/firmware/photon/#particle-subscribe-)** : un Photon peut être abonné aux messages publiés par un autre Photon, ce qui permet de les faire communiquer (par exemple : un mouvement détecté dans un lieu déclenche une installation musicale dans un autre)
 
-Référence sur les [fonctions Cloud](https://docs.particle.io/reference/device-os/firmware/photon/#cloud-functions)
-
 **[webhooks](https://docs.particle.io/reference/device-cloud/webhooks/)** : les *webhooks* («hameçons web») constituent une autre catégorie, ils sont créé dans le cloud Particle pour mettre en relation un ou plusieurs Photons avec d'autres services internet, par exemple pour stocker des valeurs de capteur dans un service de conservation et de traitement de données.
 
 **Identification et sécurité** : rendre accessible un Photon sur internet, ne signifie pas nécessairement le rendre accessible à tout le monde. Pour définir les droits d'accès chaque Photon possède un identifiant unique (*device id*), et chaque compte utilisateur est associé à un jeton d'accès (*access token*)
+
+Référence complète des [fonctions Cloud](https://docs.particle.io/reference/device-os/firmware/photon/#cloud-functions)
+
+### Déclencher des actions à distance
+
+
+#### Choisir la couleur d'un ruban de leds par une interface web
+
+[Voir ici pour le montage et les explications](./choisir_couleur_leds_RVB_a_distance_avec_javascript)
+
 
 ## Ressources
 
