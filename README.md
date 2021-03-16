@@ -200,10 +200,12 @@ Contrôler la couleur d'un ruban de LEDs RGB à distance par une interface web.
 
 [Voir ici pour le montage et les explications](./choisir_couleur_leds_RVB_a_distance_avec_javascript/)
 
+
 #### Allumer un appareil à distance
 
 Dans cet exemple, c'est une lampe mais ça pourrait être toute sorte d'appareil électrique relié au secteur.  
 (TODO)
+
 
 #### Activer un service web à partir d'un bouton
 
@@ -282,13 +284,15 @@ Se référer à la documentation : [Particle CLI](https://docs.particle.io/tutor
 
 #### Préparer un Photon avec les outils console
 
-Relier le Photon à l'ordinateur par USB, et appuyer sur le bouton SETUP jusqu'à ce que la LED clignote en bleu
+Relier le Photon à l'ordinateur par USB, il clignote rapidement en vert (mode «looking for internet») , et appuyer sur le bouton SETUP jusqu'à ce que la LED clignote en bleu («listening mode»)
 
 Pour le connecter au réseau WIFI :
 ```
 particle identify    # renvoie l'ID du Photon connecté par USB
 particle serial wifi # entrer le SSID, le type de chiffrage et le mot de passe du réseau local
 ```
+Arpès ça,il devrait respirer cyan («connected»)
+
 Pour un paramétrage complet (réseau WIFI et association à un compte Particle) :
 ```
 particle identify    # renvoie l'ID du Photon connecté par USB
@@ -304,6 +308,53 @@ Pour créer un *access token* ([doc](https://docs.particle.io/reference/develope
 ```
 particle token create    # puis renseigner email et mot de passe du compte
 ```
+
+## Résolution de problèmes
+
+### Problèmes du cloud Particle
+
+On peut voir l'état du cloud Particle ici : https://status.particle.io/
+
+### Problèmes de Photon
+
+Le Photon peut parfois être capricieux, voire *brické*, il est alors nécessaire de le reflasher complètement, de réinstaller un firmware ou de le ramener aux réglages d'usine.  
+
+La LED RGB intégrée donne des infos sur l'état du Photon, selon la couleur ou le type de clignotement, parfois en séquences. Savoir les interpréter permet d'identifier le problème : https://docs.particle.io/tutorials/device-os/led/photon/
+
+#### Reflasher / Safe mode
+
+On peut le mettre en «safe mode» et reflasher un programme qui ne fait rien.
+
+* Presser les deux boutons RESET et SETUP
+* Relâcher RESET en maintenant SETUP appuyé
+* Attendre que la LED clignote en magenta
+* Relâcher SETUP
+
+Le Photon devrait clignoter selon sa séquence habituell, clignotement vert, clignotement cyan, clignotement rapide cyan, puis respiration magenta, à partir de là il est possible de le reflasher en OTA («Over the Air»)
+
+ Hold down RESET and SETUP (or MODE), release RESET and continue to hold down SETUP/MODE until the Photon/Electron blinks magenta, then release SETUP/MODE. The device will then go through the normal sequence of colors: blinking green, blinking cyan, fast blinking cyan, then breathing magenta. Once breathing magenta, you should be able to OTA flash again.
+
+
+#### Réinstaller un firmware / DFU mode
+
+Il faut utiliser une connexion USB-série, mettre le photon en DFU-mode et utiliser le logiciel dfu-util dans un terminal.
+Installer dfu-util : http://dfu-util.sourceforge.net/ (pour Linux Debian, on le trouve dans les dépôts)  
+Télécharger un firmware : par exemple  https://github.com/particle-iot/device-os/releases/tag/v0.6.1
+
+* Presser les deux boutons RESET et SETUP
+* Relâcher RESET en maintenant SETUP appuyé
+* Attendre que le LED clignote en jaune (elle commence par clignoter en magenta)
+* Relâcher SETUP
+
+```
+# testé avec la version 0.6.1 du firmware et dfu-util 0.9.1
+dfu-util -d 0x2B04:0xD006 -a 0 -s 0x8020000 -D ./photon_firmware/system-part1-0.6.1-photon.bin
+dfu-util -d 0x2B04:0xD006 -a 0 -s 0x8060000:leave -D ./photon_firmware/system-part2-0.6.1-photon.bin
+```
+
+#### Ramener aux réglages d'usine
+
+Voir les notes de Rickkas7 : https://github.com/rickkas7/photonreset
 
 ## Ressources complémentaires
 
@@ -326,8 +377,10 @@ Pour des infos complémentaires, voir https://everything.curl.dev/
 
 **Flasher** (synonyme: téléverser): envoyer le programme compilé dans le Photon.
 
+**GPIO** : (*General Purpose Input Output*) : broches d'un microcontrôleur qui peuvent être utilisées comme entrée pour y relier des capteurs ou comme sortie pour y relier des actionneurs (cf. [GPIO sur wikipedia](https://fr.wikipedia.org/wiki/General_Purpose_Input/Output))
+
 **IDE** (*Integrated Development Environment*) : ou «environnement de développement intégré», ensemble d'outils utiles à la programmation regroupés dans le même logiciel : éditeur de texte, compilateur, débugueur, etc. (par exemple : Eclipse, Visual Studio, XCode)
 
-**GPIO** : (*General Purpose Input Output*) : broches d'un microcontrôleur qui peuvent être utilisées comme entrée pour y relier des capteurs ou comme sortie pour y relier des actionneurs (cf. [GPIO sur wikipedia](https://fr.wikipedia.org/wiki/General_Purpose_Input/Output))
+**OTA** (*Over The Air*) : mode utilisé pour flasher le programme dans un circuit en WIFI, sans connexion USB/série.
 
 **Particle** : fabricant des cartes Photon : https://particle.io
