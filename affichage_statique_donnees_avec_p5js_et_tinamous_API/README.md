@@ -9,7 +9,7 @@ Le résultat est visible ici : [API Tinamous + p5.js](http://emoc.org/introducti
 
 ## Montage
 
-![schéma de montage du circuit](./affichage_dynamique_breadboard.png)
+![schéma de montage du circuit](./affichage_statique_breadboard.png)
 
 ## Détails sur le fonctionnement  
 
