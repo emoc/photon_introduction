@@ -1,0 +1,31 @@
+/*
+  Allumer / éteindre une LED à distance
+  pierre@lesporteslogiques.net / 20200611
+  https://github.com/emoc/photon_introduction
+  Un contrôle extérieur par une page web permet d'allumer / éteindre la LED bleue intégrée au Photon
+  testé avec : photon firmware v1.4.4
+*/
+
+#define BROCHE_LED      D7   // LED bleue intégrée au Photon
+
+void setup() {
+    pinMode(BROCHE_LED, OUTPUT);
+    Particle.function("led", commanderLed);
+}
+
+void loop() {
+  // Rien dans la loop(), il faut un évènement envoyé de l'extérieur
+  // pour contrôler la LED
+}
+
+int commanderLed(String command) {
+    if (command.equalsIgnoreCase("on")) {
+        digitalWrite(BROCHE_LED, HIGH);
+        return 1; // Renvoyer 1 si la commande on est reconnue
+    }
+    else if (command.equalsIgnoreCase("off")) {
+        digitalWrite(BROCHE_LED, LOW);
+        return 1; // Renvoyer 1 si la commande off est reconnue
+    }
+    return -1; // Si la commande n'est pas reconnue, renvoyer -1
+}

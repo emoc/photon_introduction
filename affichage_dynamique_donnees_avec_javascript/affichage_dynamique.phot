@@ -1,0 +1,23 @@
+/*
+  Affichage dynamique de données envoyées par un photon avec javascript
+  pierre@lesporteslogiques.net / 20200611
+  https://github.com/emoc/photon_introduction
+  Une interface web (en JS) vient récupérer régulièrement les données du photon 
+*/
+
+#define BROCHE_PHOTO      A0  // Broche associée à la photorésistance
+
+int signal_broche_photo = 0;  // tension numérisée pour la photorésistance (sur 12 bits)
+double volts = 0.0;           // tension du signal convertie en volts         
+
+void setup() {
+    // 2 variables sont exposées sur le cloud et accessibles en JS
+    Particle.variable("analog", signal_broche_photo); // valeur brute du signal (sur 12 bits, entre 0 et 4096)
+    Particle.variable("volts", volts);                // valeur convertie en volts
+}
+
+void loop() {
+    signal_broche_photo = analogRead(BROCHE_PHOTO);   // récupérer la valeur sur 12 bits (entre 0 et 4095)
+    volts = signal_broche_photo * 3.3 / 4096.0;       // convertir en volts
+    delay(100);
+}

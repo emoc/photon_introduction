@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<!--
+  Affichage dynamique de données envoyées par un photon avec javascript
+  pierre@lesporteslogiques.net / 20200611
+  https://github.com/emoc/photon_introduction
+  Une interface web (en JS) vient récupérer régulièrement les données du photon
+
+  IMPORTANT : remplacer deviceId et AccessToken par des valeurs réelles!
+-->
+<head>
+<meta charset="utf-8">
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="raphael-2.1.4.min.js"></script>
+<script src="justgage-1.2.2.js"></script>
+
+<script>
+  var accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+  var deviceID = "xxxxxxxxxxxxxxxxxxxxxxxxx"
+  var url = "https://api.particle.io/v1/devices/" + deviceID + "/volts";
+  var intervalle = 2000;            // intervalle entre 2 requêtes
+
+  // Action quand il y a une réponse à la requête
+  function callback(data, status){
+    if (status == "success") {
+      volts = parseFloat(data.result);
+      volts = volts.toFixed(2);     // pour avoir toujours deux chiffres après la virgule
+      g.refresh(volts);             // mettre à jour la jauge
+      setTimeout(getReading, intervalle); // prochaine lecture dans ...
+    } else {
+      alert("Problème...");
+    }
+  }
+  //
+  function getReading(){
+     	$.get(url, {access_token: accessToken}, callback);
+  }
+</script>
+</head>
+
+<body>
+<div id="jauge" style="width:400px; height:320px"></div>
+
+<script>
+  // Déclarer et initialiser la jauge
+  var g = new JustGage({
+      id: "jauge",
+      decimals: 2,
+      value: 0,
+      min: 0,
+      max: 3.3,
+      title: "Volts"
+  });
+  getReading(); // déclencher la requête pour récupérer la mesure
+</script>
+</body>
+</html>

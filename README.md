@@ -23,7 +23,7 @@ Ce sont deux variantes de cartes programmables, pratiques pour créer des protot
 
 La carte Photon se programme sans fil (ce qui permet aussi de la programmer sans être dans le même lieu!), alors qu'en général l'Arduino se programme par une connexion USB-série. Le code qui permet de programmer la carte Photon est similaire à celui utilisé sur Arduino, il est donc possible de passer très rapidement d'une carte à l'autre, selon les besoins.
 
-Pour la partie électronique, le microcontrôleur (= «le cerveau de la carte» qui équipe l'arduino fait partie de la série ATMega 8bits de Microchip, alors que le Photon est équipé d'un microcontrôleur ARM Cortex M3 32bits, plus puissant ainsi que d'un circuit spécialisé pour la partie wifi (TODO voir plus loin pour des explications précises).
+Pour la partie électronique, le microcontrôleur (= «le cerveau de la carte») qui équipe l'arduino fait partie de la série ATMega 8bits de Microchip, alors que le Photon est équipé d'un microcontrôleur ARM Cortex M3 32bits, plus puissant ainsi que d'un circuit spécialisé pour la partie wifi (TODO voir plus loin pour des explications précises).
 
 
 ### Pré-requis
@@ -182,19 +182,23 @@ Référence complète des [fonctions Cloud](https://docs.particle.io/reference/d
 
 ### Actions à distance
 
-#### Allumer une led à distance
+#### Contrôler une LED à distance
 
-Car on commence toujours par une led !
+Contrôle simple d'une LED à distance (allumer / éteindre) par une interface web, car on commence toujours par une led !
 
-(TODO)
+[Voir ici pour les explications](./controle_led_a_distance/)
 
-#### Allumer une led à distance (avec retour d'informations)
+#### Contrôler une LED à distance (avec retour d'informations)
 
-(TODO)
+Contrôle simple d'une LED à distance (allumer / éteindre) par une interface web, le photon renvoie l'état de la LED vers l'interface web pour qu'elle soit mise à jour.
 
-#### Choisir la couleur d'un ruban de leds par une interface web
+[Voir ici pour les explications](./controle_led_a_distance_avec_callback/)
 
-[Voir ici pour le montage et les explications](./choisir_couleur_leds_RVB_a_distance_avec_javascript)
+#### Choisir la couleur d'un ruban de LEDs par une interface web
+
+Contrôler la couleur d'un ruban de LEDs RGB à distance par une interface web.
+
+[Voir ici pour le montage et les explications](./choisir_couleur_leds_RVB_a_distance_avec_javascript/)
 
 #### Allumer un appareil à distance
 
@@ -210,9 +214,9 @@ Avec IFTTT : un bouton pour envoyer un tweet.
 
 #### Afficher des données envoyées par un Photon
 
-Pour cet exemple, on utilisera un capteur simple de lumière : une photo résistance
-La valeur captée influe sur la couleur de fond de la page.  
-(TODO)
+Pour cet exemple, on utilisera un capteur simple de lumière : une photo résistance pour afficher sa valeur, mise à jour régulièrement, dans une page web.
+
+[Voir ici pour le montage et les explications](./affichage_dynamique_donnees_avec_javascript/)
 
 #### Stocker des données et les traiter (avec Tinamous)
 
@@ -278,7 +282,14 @@ Se référer à la documentation : [Particle CLI](https://docs.particle.io/tutor
 
 #### Préparer un Photon avec les outils console
 
-Relier le Photon à l'ordinateur par USB
+Relier le Photon à l'ordinateur par USB, et appuyer sur le bouton SETUP jusqu'à ce que la LED clignote en bleu
+
+Pour le connecter au réseau WIFI :
+```
+particle identify    # renvoie l'ID du Photon connecté par USB
+particle serial wifi # entrer le SSID, le type de chiffrage et le mot de passe du réseau local
+```
+Pour un paramétrage complet (réseau WIFI et association à un compte Particle) :
 ```
 particle identify    # renvoie l'ID du Photon connecté par USB
 particle login       # renseigner les informations du compte utilisateur
@@ -287,6 +298,25 @@ particle serial wifi # entrer le SSID, le type de chiffrage et le mot de passe d
 particle cloud login
 particle add device {ID du Photon trouvé précédemment}
 ```
+
+#### Créer un «access token»
+Pour créer un *access token* ([doc](https://docs.particle.io/reference/developer-tools/cli/#particle-token-create))
+```
+particle token create    # puis renseigner email et mot de passe du compte
+```
+
+## Ressources complémentaires
+
+### Utiliser cURL
+
+cURL est un logiciel en ligne de commande pour lancer des requêtes web dans un terminal, il peut-être utilisé sur Linux, MacOS ou Windows.  
+Pour l'installer :
+* Windows 10 : cURL est installé par défaut
+* Windows antérieurs : télécharger ici https://curl.se/windows/
+* MacOS : installé par défaut
+* Linux : installable par le gestionnaire de paquet (ex pour debian/ubuntu : sudo apt install curl)  
+
+Pour des infos complémentaires, voir https://everything.curl.dev/
 
 ## Lexique
 

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+    Contrôle d'une LED à distance
+    pierre@lesporteslogiques.net / 20200611
+    à utiliser avec un Photon (voir https://github.com/emoc/introduction_photon)
+    IMPORTANT : remplacer deviceId et AccessToken par des valeurs réelles!
+-->
+<head>
+<meta charset="utf-8">
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+
+	var accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxx";
+	var deviceID = "xxxxxxxxxxxxxxxxxxxxxxx";
+	var url = "https://api.particle.io/v1/devices/" + deviceID + "/led";
+	
+	function switchOn() {
+		$.post(url, {params: "ON", access_token: accessToken });
+	}  
+	
+	function switchOff() {
+		$.post(url, {params: "OFF", access_token: accessToken });
+	}  
+
+</script>
+</head>	
+
+<body>
+
+<h1>On/Off Control</h1>	
+	
+<input type="button" onClick="switchOn()" value="ON"/>
+<input type="button" onClick="switchOff()" value="OFF"/>
+	
+</body>
+</html>

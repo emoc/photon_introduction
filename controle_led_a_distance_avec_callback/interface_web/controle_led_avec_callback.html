@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+    Contrôle d'une LED à distance avec traitement de svaleurs renvoyées (par fonction de callback)
+    pierre@lesporteslogiques.net / 20200611
+    à utiliser avec un Photon (voir https://github.com/emoc/introduction_photon)
+    IMPORTANT : remplacer deviceId et AccessToken par des valeurs réelles!
+-->
+<head>
+<meta charset="utf-8">
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+
+<style type="text/css">
+  .on  { 
+    background:green; 
+  }
+  .off { 
+    background:red; 
+  }
+	  
+  input[type=button] {
+    color: white;
+    font-size: 1.5em;
+    width: 50px;
+  }
+</style>
+
+<script>
+var accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+var deviceID = "xxxxxxxxxxxxxxxxxxxxxxxxxx";
+var url = "https://api.particle.io/v1/devices/" + deviceID + "/led";
+
+function toggleLed(item){
+    
+  function setLed(message) {
+    $.post(url, {params: message, access_token: accessToken}, callback, "json");
+  } 
+
+  function callback(data){
+    if (data.return_value == 1) {
+      item.className = "off";
+      item.value = "off";
+    }	
+    else if (data.return_value == 2) {
+      item.className = "on";
+      item.value = "on";
+    }
+    else if (data.return_value == -1) {
+      alert("Impossible de se connecter au Photon");
+    }
+  }
+
+  if (item.className == "on") {
+    setLed("on");
+  } else {
+    setLed("off");
+  }
+}
+
+</script>
+</head>	
+
+<body>
+<h1>Led On/Off et retour</h1>	
+<input type="button" id="btn" class="off" onClick="toggleLed(this)" value="off"/> <br />
+</body>
+</html>
