@@ -7,6 +7,9 @@ Les données sont récupérées sous la forme d'un fichier JSON et affichées pa
 
 Le résultat est visible ici : [API Tinamous + p5.js](http://emoc.org/introduction_photon/affichage_statique_donnees_avec_p5js_et_tinamous_API/)  
 
+## Montage
+
+![schéma de montage du circuit](./affichage_dynamique_breadboard.png)
 
 ## Détails sur le fonctionnement  
 

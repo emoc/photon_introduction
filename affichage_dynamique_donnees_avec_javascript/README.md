@@ -1,6 +1,6 @@
 ## Affichage dynamique de données avec Photon
 
-Récupérer des données depuis un Photon et les afficher dynamiquement dans une interface web construite avec javascript.
+Récupérer des données depuis un Photon et les afficher dynamiquement dans une interface web construite avec javascript, sous forme de jauge (en utilisant la bibliothèque justgage).
 
 ![jauge](./jauge.gif)
 
