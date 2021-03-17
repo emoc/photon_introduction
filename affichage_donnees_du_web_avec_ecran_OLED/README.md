@@ -29,7 +29,7 @@ Les données sont fournies par une pseudo API qui renvoie un fichier JSON sous l
 
 #### Créer le *webhook*
 
-Se connecter à la console Particle, dans la partie «integrations», choisir «new integration», puis *WebHook* dans les choix disponibles
+Se connecter à la console Particle https://console.particle.io/ , dans la partie «integrations», choisir «new integration», puis *WebHook* dans les choix disponibles
 
 
 ![étape 1](./assets/sequence_webhook_1.png#)
@@ -48,6 +48,7 @@ Remplir les champs de la ménière suivante
 * Device: Any
 
 #### Configurer le traitement des données
+
 ![étape 4](./assets/sequence_webhook_4.png#)
 
 Sélectionner «advanced options», dans la partie *Webhook responses*, ajouter le modèle de traitement dans la case «Response Template» :

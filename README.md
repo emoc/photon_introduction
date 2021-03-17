@@ -362,7 +362,7 @@ Voir les notes de Rickkas7 : https://github.com/rickkas7/photonreset
 
 ### Utiliser cURL
 
-cURL est un logiciel en ligne de commande pour lancer des requêtes web dans un terminal, il peut-être utilisé sur Linux, MacOS ou Windows.  
+cURL est un logiciel en ligne de commande pour lancer des requêtes web dans un terminal, il peut-être utilisé sur Linux, MacOS ou Windows. Dans le contexte du Photon, cURL est utile pour tester que des requêtes web fonctionnent avant de les intégrer dans le code d'une application javascript.  
 Pour l'installer :
 * Windows 10 : cURL est installé par défaut
 * Windows antérieurs : télécharger ici https://curl.se/windows/
