@@ -25,7 +25,7 @@ int commanderLed(String command) {
     }
     else if (command.equalsIgnoreCase("off")) {
         digitalWrite(BROCHE_LED, LOW);
-        return 1; // Renvoyer 1 si la commande off est reconnue
+        return 2; // Renvoyer 1 si la commande off est reconnue
     }
     return -1; // Si la commande n'est pas reconnue, renvoyer -1
 }

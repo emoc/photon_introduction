@@ -21,7 +21,7 @@ Ce sont deux variantes de cartes programmables, pratiques pour créer des protot
 
 La carte Photon se programme sans fil (ce qui permet aussi de la programmer sans être dans le même lieu!), alors qu'en général l'Arduino se programme par une connexion USB-série. Le code qui permet de programmer la carte Photon est similaire à celui utilisé sur Arduino, il est donc possible de passer très rapidement d'une carte à l'autre, selon les besoins.
 
-Pour la partie électronique, le microcontrôleur (= «le cerveau de la carte») qui équipe l'arduino fait partie de la série ATMega 8bits de Microchip, alors que le Photon est équipé d'un microcontrôleur ARM Cortex M3 32bits, plus puissant ainsi que d'un circuit spécialisé pour la partie wifi (TODO voir plus loin pour des explications précises).
+Pour la partie électronique, le microcontrôleur (= «le cerveau de la carte») qui équipe l'arduino fait partie de la série ATMega 8bits de Microchip, alors que le Photon est équipé d'un microcontrôleur ARM Cortex M3 32bits, plus puissant ainsi que d'un circuit spécialisé pour la partie wifi <!-- (TODO voir plus loin pour des explications précises)-->.
 
 
 ### Pré-requis
@@ -37,7 +37,7 @@ Cette introduction à Photon requiert que vous soyez déjà initié à l'électr
 ### Qui produit les cartes Photon ?
 
 
-C'est la société américaine [Particle](https://www.particle.io/) qui fabrique et vend les cartes Photon. Il s'agit de la 2e génération de circuits (photon, electron) qu'ils ont produit. Depuis, une 3e génération (argon, boron) est sortie permettant de mettre en place des réseaux maillés de capteurs (*wireless mesh network*). (TODO voir plus loin)
+C'est la société américaine [Particle](https://www.particle.io/) qui fabrique et vend les cartes Photon. Il s'agit de la 2e génération de circuits (photon, electron) qu'ils ont produit. Depuis, une 3e génération (argon, boron) est sortie permettant de mettre en place des réseaux maillés de capteurs (*wireless mesh network*). <!-- (TODO voir plus loin) -->
 
 
 
