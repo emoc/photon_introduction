@@ -1,6 +1,6 @@
 # Introduction au Photon
 
-**(en cours de rédaction mars 2021)**
+**mise à jour : mars 2021**
 
 ## Introduction
 
