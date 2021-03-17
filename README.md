@@ -1,8 +1,6 @@
 # Introduction au Photon
 
-**(en cours de rédaction mai/juin 2020)**
-
-# 💅 .
+**(en cours de rédaction mars 2021)**
 
 ## Introduction
 
@@ -222,7 +220,7 @@ Pour cet exemple, on utilisera un capteur simple de lumière : une photo résist
 
 #### Stocker des données et les traiter (avec Tinamous)
 
-(TODO) ajouter montage
+Cet exemple décrit comment conserver les données captées par un photon dans le cloud et comment les récupérer pour les afficher. Il est basé sur le service gratuit fourni par Tinamous ( http://tinamous.com/ ) 
 
 [Voir ici pour le montage et les explications](./affichage_statique_donnees_avec_p5js_et_tinamous_API)
 

@@ -1,0 +1,107 @@
+/*
+   Réception de données JSON, traitement et affichage sur un écran OLED
+   Les données sont récupérés via un webhook configuré sur le cloud Particle
+   
+   pierre@lesporteslogiques.net / 20210316
+   https://github.com/emoc/photon_introduction
+*/
+
+#include "Grove_OLED_128x64.h"   // bibliothèque de code pour l'écran OLED
+#include <Wire.h>                // bibliothèque de code pur l'I2C
+#include <avr/pgmspace.h>
+
+// Les données récupérées seront stockées dans des chaines de caractère
+String s_temperature, s_humidite, s_luminosite, s_valeur;
+
+
+void setup() {
+  // S'abonner à la réponse du webhook pour déclencher un évènement
+  Particle.subscribe("hook-response/meteotest", traitementData, MY_DEVICES);
+  
+  Wire.begin();                         // Initialiser la communication I2C
+  SeeedOled.init();                     // Initialiser l'écran OLED
+
+  SeeedOled.clearDisplay();             // Effacer l'écran et fixer la position du curseur dans le coin en haut à gauche
+  SeeedOled.setNormalDisplay();         // Affichage normal (blanc sur fond noir)
+  SeeedOled.setPageMode();              // Définir le mode d'affichage : Page Mode
+  SeeedOled.setTextXY(0,0);             // Placer le curseur : colonne 0, ligne 0
+  SeeedOled.putString("Hello World!");  // Message d'accueil
+  
+  getData();                            // Récupérer les premières données   
+
+}
+
+void loop() {
+
+  getData();                            // Récupérer les données
+  delay(20000);                         // Patienter 20 secondes
+  
+}
+
+void getData() {
+  
+  String data = String(20);              // Déclarer la variable pour récupérer les données
+  Particle.publish("meteotest", data, PRIVATE); // Déclencher la requête pour récupérer les infos
+
+}
+
+void traitementData(const char *event, const char *data) {
+    
+  /* Les données en JSON ressemblent à 
+     {
+     "temperature":19.3,
+     "humidite":65,
+     "luminosite":624,
+     "valeur":123
+     }
+     
+     Puis, elles sont formatées dans le webhook selon ce modèle
+     {{{temperature}}}~{{{humidite}}}~{{{luminosite}}}~{{{valeur}}}
+     
+     Enfin, elles sont renvoyées par le webhook sous cette forme
+     19.3~65~624~123
+   */
+  
+  // Traitement de la chaîne de caractères    
+  String receivedStr =  String( data );
+  int loc1 = 0;
+  int loc2 = 0;
+  int loc3 = 0;
+  int loc4 = 0;
+  
+  loc1 = receivedStr.indexOf("~");                          // Chercher la postion de la première occurence de ~
+  s_temperature = String(receivedStr.substring(0,loc1));    // Récupérer les caractères entre l'index 0 et ~
+
+  loc2 = receivedStr.indexOf("~",loc1+1);                   // Chercher la position de la seconde occurence
+  s_humidite = String(receivedStr.substring(loc1+1,loc2));
+
+  loc3 = receivedStr.indexOf("~",loc2+1);
+  s_luminosite = String(receivedStr.substring(loc2+1,loc3));
+
+  loc4 = receivedStr.indexOf("~",loc3+1);
+  s_valeur = String(receivedStr.substring(loc3+1));
+    
+  // Affichage des données
+  SeeedOled.clearDisplay();
+  
+  SeeedOled.setTextXY(0,0);
+  SeeedOled.putString("TEMP");
+  SeeedOled.setTextXY(0,7);
+  SeeedOled.putString(s_temperature);
+    
+  SeeedOled.setTextXY(2,0);
+  SeeedOled.putString("HUMI");
+  SeeedOled.setTextXY(2,7);
+  SeeedOled.putString(s_humidite);
+    
+  SeeedOled.setTextXY(4,0);
+  SeeedOled.putString("LUMI");
+  SeeedOled.setTextXY(4,7);
+  SeeedOled.putString(s_luminosite);
+    
+  SeeedOled.setTextXY(6,0);
+  SeeedOled.putString("VAL.");
+  SeeedOled.setTextXY(6,7);
+  SeeedOled.putString(s_valeur);
+
+}
