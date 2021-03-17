@@ -1,0 +1,38 @@
+/*
+   Presser un bouton pour activer un service web par l'intermédiaire de IFTTT
+
+   pierre@lesporteslogiques.net / 20210316
+   https://github.com/emoc/photon_introduction
+*/
+
+#define BROCHE_LED       D0
+#define BROCHE_BOUTON    D2
+
+unsigned long last_push;
+
+boolean appuyer = false;
+
+void setup() {
+  pinMode(BROCHE_LED,   OUTPUT);
+  pinMode(BROCHE_BOUTON, INPUT);
+}
+
+void loop() {
+    
+  if (digitalRead(BROCHE_BOUTON) == HIGH) { // bouton appuyé
+    digitalWrite(BROCHE_LED, HIGH);
+    last_push = millis();                   // enregistrer le moment
+    appuyer = true;
+  } else {
+    digitalWrite(BROCHE_LED, LOW);
+    delay(10);
+  }
+  
+  // On publie l'évènement une fois par seconde maximum
+  if (appuyer) {
+    if (millis() - last_push > 1000) {
+       Particle.publish("IFTTT", "bonjour"); // publier l'évènement
+       appuyer = false;
+    }
+  } 
+}

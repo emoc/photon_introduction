@@ -42,13 +42,16 @@ C'est la société américaine [Particle](https://www.particle.io/) qui fabrique
 
 
 ## Mise en pratique
-
+<!---
 (TODO)
-
-### Comment ça fonctionne
+--->
+### Comment ça fonctionne ?
 
 #### Communication par le WIFI
-(TODO)
+
+Le Photon se connecte à internet via le wifi du réseau local, pour cela il faut configurer l'accès (nom du réseau et mot de passe). Une fois relié, il se connectera automatiquement au réseau et on pourra le programmer à distance.  
+
+Il est nécessaire de passer par un réseau local sans portail captif (le type de réseau qui demande d'inscrire ses identifiants dans une page du navigateur).
 
 #### Codes lumineux du Photon
 
@@ -68,7 +71,7 @@ Trois étapes sont nécessaires avant de commencer à programmer son Photon :
 
 Pour se créer un compte : https://login.particle.io/signup (identifiant et mot de passe à conserver!)
 
-#### Appairer le photon
+#### Appairer le photon et configurer les codes WIFI
 
 Cette opération consiste à associer un Photon au compte Particle précédemment créé. Pour cela la méthode la plus simple est d'installer l'application Particle disponible pour [Android](https://play.google.com/store/apps/details?id=io.particle.android.app) ou [iPhone](https://itunes.apple.com/us/app/particle-build-iot-projects-wifi-or-cellular/id991459054?mt=8)
 
@@ -198,17 +201,18 @@ Contrôler la couleur d'un ruban de LEDs RGB à distance par une interface web.
 
 [Voir ici pour le montage et les explications](./choisir_couleur_leds_RVB_a_distance_avec_javascript/)
 
-
+<!---
 #### Allumer un appareil à distance
 
 Dans cet exemple, c'est une lampe mais ça pourrait être toute sorte d'appareil électrique relié au secteur.  
 (TODO)
-
+--->
 
 #### Activer un service web à partir d'un bouton
 
-Avec IFTTT : un bouton pour envoyer un tweet.  
-(TODO)
+Cet exemple décrit comment déclencher l'envoi d'un tweet à partir d'un bouton relié à un Photon en utilisant le service IFTTT (*IF This Then That*)
+
+[Montage et explications](./declenchement_evenement_distant_avec_IFTTT)
 
 ### Récupérer des données depuis un Photon
 
@@ -357,6 +361,10 @@ dfu-util -d 0x2B04:0xD006 -a 0 -s 0x8060000:leave -D ./photon_firmware/system-pa
 #### Ramener aux réglages d'usine
 
 Voir les notes de Rickkas7 : https://github.com/rickkas7/photonreset
+
+#### Autres problèmes
+
+* [Photon bloqué / LED RGB solid cyan](https://community.particle.io/t/photon-led-stuck-at-cyan/17917/12)
 
 ## Ressources complémentaires
 
