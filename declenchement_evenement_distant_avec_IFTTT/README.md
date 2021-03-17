@@ -3,7 +3,7 @@
 Appuyer sur un bouton pour envoyer un tweet. Cet exemple montre comment utiliser la fonction Particle.publish pour publier un évènement relié à la plateforme IFTTT. IFTTT permet à partir d'un évènement de déclencher un autre service web (par exemple : spotify, telegram, twitch, twitter, vimeo et des dizaines d'autres).  
 Il est également possible de déclencher l'envoi d'un SMS (limité à 10 SMS par mois pour l'Europe)
 
-A noter : twitter ne relaie des messages que si leur contenu diffère (ajouter )
+A noter : twitter ne relaie des messages que si leur contenu diffère (ajouter la date permet de contourner ce problème)
 
 ![Schéma du montage](./declenchement_evenement_IFTTT_breadboard.png#)
 
