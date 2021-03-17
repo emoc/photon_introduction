@@ -220,17 +220,21 @@ Pour cet exemple, on utilisera un capteur simple de lumière : une photo résist
 
 #### Stocker des données et les traiter (avec Tinamous)
 
-Cet exemple décrit comment conserver les données captées par un photon dans le cloud et comment les récupérer pour les afficher. Il est basé sur le service gratuit fourni par Tinamous ( http://tinamous.com/ ) 
+Cet exemple décrit comment conserver les données captées par un photon dans le cloud et comment les récupérer pour les afficher. Il est basé sur le service gratuit fourni par Tinamous ( http://tinamous.com/ )
 
-[Voir ici pour le montage et les explications](./affichage_statique_donnees_avec_p5js_et_tinamous_API)
+[Voir ici pour le montage et les explications](./affichage_statique_donnees_avec_p5js_et_tinamous_API/)
 
+<!---
 #### Stocker des données et les traiter (avec Thingspeak)
 
 (TODO) notions de webhooks
+--->
 
 #### Afficher des données du web
 
-(TODO) source de données + afficheur 4x7 segments
+Comment récupérer des données JSON fournies par une API, les traiter et les afficher sur un écran OLED ?
+
+[Montage et explications](./affichage_donnees_du_web_avec_ecran_OLED/)
 
 ## Ressources
 
