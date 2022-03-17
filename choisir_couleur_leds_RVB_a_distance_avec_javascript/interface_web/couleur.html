@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 
+<!--
     Contrôle de la couleur d'un ruban de leds à distance
-    pierre@lesporteslogiques.net / 20200611
+    pierre@lesporteslogiques.net / 20200611 / 20220317
     à utiliser avec un Photon (voir https://github.com/emoc/introduction_photon)
     IMPORTANT : remplacer deviceId et AccessToken par des valeurs réelles!
  -->
@@ -22,33 +22,37 @@
         right: 0;
         margin: auto;
     }
-    #couleur {
+    #couleur_choix {
         width: 200px;
         height: 200px;
         padding: 10px;
     }
-    #couleur-choisie {
+    #couleur_choisie {
         width: 180px;
     }
 </style>
 
 <script>
+
+// Variables pour la communication à distance *********************************
 var accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 var deviceID = "xxxxxxxxxxxxxxxxxxxxxxxx";
 var url = "https://api.particle.io/v1/devices/" + deviceID + "/couleurs";
 
-function envoyerCouleur(nouvelle_couleur) {
+var couleur_defaut = "#ff65ee";
 
+// Préparation et envoi de la requête au Photon *******************************
+function envoyerCouleur(nouvelle_couleur) {
     var rouge = pad(hexToRgb(nouvelle_couleur).r, 3);
     var vert  = pad(hexToRgb(nouvelle_couleur).g, 3);
     var bleu  = pad(hexToRgb(nouvelle_couleur).b, 3);
-    
-    var couleur = rouge + vert + bleu;
-    //alert(couleur);
+
+    var couleur = rouge + vert + bleu;     // (chaine de caractères RVB)
 
     $.post(url, {params: couleur, access_token: accessToken });
-}  
+}
 
+// Conversion des valeurs hexadécimales en RGB ********************************
 function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? {
@@ -58,21 +62,44 @@ function hexToRgb(hex) {
     } : null;
 }
 
+// Ajouter des zéros au début d'un nombre : 3 devient 003, par exemple ********
 function pad(num, size) {
     var s = "000000000" + num;
     return s.substr(s.length-size);
 }
 
+// Au chargement de la page, attribuer une couleur et associer une fctn à l'évènement "change"
+function startup() {
+    var couleur_choix = document.getElementById("couleur_choix");
+    couleur_choix.value = couleur_defaut;
+    couleur_choix.addEventListener("change", couleurChange, false);
+    var couleur_choisie = document.getElementById("couleur_choisie");
+    couleur_choisie.value = couleur_defaut;
+}
+
+// Fonction déclenchée par un changement de couleur dans l'UI *****************
+function couleurChange(event) {
+    var couleur_choisie = document.getElementById("couleur_choisie");
+    couleur_choisie.value = event.target.value;
+    envoyerCouleur(event.target.value);
+    console.log(event.target.value);
+}
+
+
 </script>
 
-</head>	
+</head>
 
 <body>
     <div>
-        <input id="couleur" type="color" value="#ff0000" onchange="javascript:document.getElementById('couleur-choisie').value = document.getElementById('couleur').value; envoyerCouleur(document.getElementById('couleur').value);" />
+        <input id="couleur_choix" type="color">
         <br /><br />
-        <input id="couleur-choisie" type="text" readonly value="#ff0000" />
+        <input id="couleur_choisie" type="text">
     </div>
+    <script>
+        // Déclencher la fonction startup une fois la page chargée
+        window.addEventListener("load", startup, false);
+    </script>
 </body>
 
 </html>
