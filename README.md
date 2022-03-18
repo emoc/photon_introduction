@@ -243,6 +243,8 @@ Comment récupérer des données JSON fournies par une API, les traiter et les a
 
 ## En pratique
 
+## En pratique
+
 
 ### Retrouver son Device ID
 
