@@ -240,7 +240,9 @@ Comment récupérer des données JSON fournies par une API, les traiter et les a
 
 [Montage et explications](./affichage_donnees_du_web_avec_ecran_OLED/)
 
+
 ## En pratique
+
 
 ### Retrouver son Device ID
 
