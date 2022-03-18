@@ -1,6 +1,6 @@
 # Introduction au Photon
 
-**mise à jour : mars 2021**
+**mise à jour : mars 2022**
 
 ## Introduction
 
@@ -240,6 +240,19 @@ Comment récupérer des données JSON fournies par une API, les traiter et les a
 
 [Montage et explications](./affichage_donnees_du_web_avec_ecran_OLED/)
 
+
+## En pratique
+
+### Retrouver son Device ID
+
+![Retrouver son Device ID](./assets/images_bd/retrouver_device_id.png?0)
+
+### Créer un access token
+
+Après avoir installé les outils console, ouvrir un terminal et suivre les étapes suivantes. L'adresse email correspond au compte associé au Photon.
+
+![Créer un access token](./assets/images_bd/creer_access_token.png?0)
+
 ## Ressources
 
 ### Documentation
@@ -381,7 +394,11 @@ Pour des infos complémentaires, voir https://everything.curl.dev/
 
 ## Lexique
 
+**Access Token** : autorisation d'accès au compte Particle qui permet d'activer les photons reliés à ce compte. L'*access token* a une durée limitée
+
 **CLI** (*Command Line Interface*) : outils en ligne de commande.
+
+**Device ID** : identifiant unique associé à chaque Photon, on peut retrouver le *Device Id* dans l'IDE Particle, onglet Devices, puis en cliquant sur la flèche de droite.
 
 **Firmware** (parfois traduit micrologiciel, microcode) : logiciel «embarqué» dans un circuit, c'est le nom d'un logiciel qui sera placé dans un circuit programmable. (cf. [Firmware sur wikipedia](https://fr.wikipedia.org/wiki/Firmware))
 
